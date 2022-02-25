@@ -1,5 +1,5 @@
-import 'dart:developer';
 import 'package:bellis_test/core/exceptions.dart';
+import 'package:bellis_test/data/datasources/news_local_datasources.dart';
 import 'package:bellis_test/data/datasources/news_remote_datasource.dart';
 import 'package:bellis_test/data/models/news_model.dart';
 
@@ -13,9 +13,21 @@ class NewsRepository {
     }
   }
 
-  Future<void> saveLocal(NewsModel record) async {
-    String json = record.toJson().toString();
+  void saveLocal(NewsModel record)  {
+    NewsLocalDatasource datasource = NewsLocalDatasource();
+    try{
+      return datasource.saveLocal(record);
+    } catch (e) {
+      throw SaveLocalException();
+    }
+  }
 
-    log(json);
+  void removeLocal(NewsModel record)  {
+    NewsLocalDatasource datasource = NewsLocalDatasource();
+    try{
+      return datasource.removeLocal(record);
+    } catch (e) {
+      throw SaveLocalException();
+    }
   }
 }

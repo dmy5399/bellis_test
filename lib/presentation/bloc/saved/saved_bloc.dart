@@ -12,14 +12,21 @@ class SavedBloc extends Bloc<SavedEvent, SavedState> {
 
   SavedBloc(this.repo) : super(SavedInitialState()) {
     on<SavedSaveEvent>((event, emit) {
-      emit(SavedLoadingState());
       try{
         repo.saveLocal(event.record);
-        emit(SavedLoadedState());
       } catch (_) {
         emit(SavedErrorState());
       }
     });
+
+    on<SavedRemoveEvent>((event, emit) {
+      try{
+        repo.removeLocal(event.record);
+      } catch (_) {
+        emit(SavedErrorState());
+      }
+    });
+
   }
 
 }

@@ -1,7 +1,7 @@
 import 'package:bellis_test/data/repositories/news_repository.dart';
 import 'package:bellis_test/presentation/bloc/news/news_bloc.dart';
 import 'package:bellis_test/presentation/bloc/saved/saved_bloc.dart';
-import 'package:bellis_test/presentation/screens/news_screen.dart';
+import 'package:bellis_test/presentation/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const NewsScreen(),
+        home: const SplashScreen(),
       ),
     );
   }
