@@ -26,5 +26,16 @@ class NewsModel {
     );
   }
 
+  Map<String, dynamic> toJson() {
+    return {
+      'title': title,
+      'description': description,
+      'link': link,
+      'enclosure': enclosure,
+      'guid': guid,
+      'pubDate': pubDate,
+    };
+  }
+
 }
 

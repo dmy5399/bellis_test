@@ -8,3 +8,5 @@ class SavedInitialState extends SavedState {}
 class SavedLoadingState extends SavedState {}
 
 class SavedLoadedState extends SavedState {}
+
+class SavedErrorState extends SavedState {}
