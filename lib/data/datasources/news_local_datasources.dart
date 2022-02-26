@@ -7,13 +7,13 @@ import 'package:bellis_test/data/models/news_model.dart';
 
 class NewsLocalDatasource {
 
-  Future<List<NewsModel>> getAll() async {
+  List<NewsModel> getAll() {
 
     try {
       List<String>? cached = prefs.getStringList(SAVED_PREFS);
       cached ??= [];
 
-      throw Exception();
+      return cached.map((json) => NewsModel.fromJson(jsonDecode(json))).toList();
     } catch (e) {
       throw Exception();
     }

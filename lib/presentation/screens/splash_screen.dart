@@ -18,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
     Future.delayed(const Duration(milliseconds: 1000), () async {
       prefs = await SharedPreferences.getInstance();
-      Navigator.push(context, MaterialPageRoute(builder:(context) => const NewsScreen()));
+      Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const NewsScreen()), (Route<dynamic> route) => false);
     });
 
     super.initState();

@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'package:bellis_test/data/models/news_model.dart';
 import 'package:bellis_test/data/repositories/news_repository.dart';
 import 'package:bloc/bloc.dart';
@@ -22,5 +21,6 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
       }
 
     });
+
   }
 }

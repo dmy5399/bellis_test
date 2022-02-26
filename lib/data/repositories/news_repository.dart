@@ -13,6 +13,15 @@ class NewsRepository {
     }
   }
 
+  Future<List<NewsModel>> getAllLocal() async {
+    NewsLocalDatasource datasource = NewsLocalDatasource();
+    try{
+      return await datasource.getAll();
+    } catch (e) {
+      throw ServerException();
+    }
+  }
+
   void saveLocal(NewsModel record)  {
     NewsLocalDatasource datasource = NewsLocalDatasource();
     try{

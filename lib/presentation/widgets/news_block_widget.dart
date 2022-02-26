@@ -1,6 +1,5 @@
 import 'package:bellis_test/core/utils.dart';
 import 'package:bellis_test/data/models/news_model.dart';
-import 'package:bellis_test/presentation/bloc/news/news_bloc.dart';
 import 'package:bellis_test/presentation/bloc/saved/saved_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,7 +21,10 @@ class _NewsBlockWidgetState extends State<NewsBlockWidget> {
   Widget build(BuildContext context) {
     var records = widget.records;
 
-    return ListView.builder(
+    if(records.isEmpty) {
+      return const Center(child: Text("Нет записей"),);
+    } else {
+      return ListView.builder(
           shrinkWrap: true,
           itemCount: records.length,
           itemBuilder: (BuildContext context, int index) {
@@ -76,5 +78,7 @@ class _NewsBlockWidgetState extends State<NewsBlockWidget> {
             );
           }
       );
+    }
+
   }
 }

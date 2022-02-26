@@ -27,6 +27,18 @@ class SavedBloc extends Bloc<SavedEvent, SavedState> {
       }
     });
 
+    on<SavedLoadEvent>((event, emit) async {
+      emit(SavedLoadingState());
+
+      try{
+        List<NewsModel> records = await repo.getAllLocal();
+        emit(SavedLoadedState(records: records));
+      } catch (e) {
+        emit(SavedErrorState());
+      }
+
+    });
+
   }
 
 }

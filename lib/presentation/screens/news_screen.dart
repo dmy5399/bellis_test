@@ -1,13 +1,8 @@
-import 'dart:developer';
-import 'package:bellis_test/core/env.dart';
-import 'package:bellis_test/core/utils.dart';
-import 'package:bellis_test/data/models/news_model.dart';
 import 'package:bellis_test/presentation/bloc/news/news_bloc.dart';
-import 'package:bellis_test/presentation/bloc/saved/saved_bloc.dart';
+import 'package:bellis_test/presentation/screens/saved_news_screen.dart';
 import 'package:bellis_test/presentation/widgets/news_block_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class NewsScreen extends StatefulWidget {
   const NewsScreen({Key? key}) : super(key: key);
@@ -30,6 +25,14 @@ class _NewsScreenState extends State<NewsScreen> {
     return Scaffold(
         appBar: AppBar(
           title: const Text('Новости'),
+          actions: [
+            IconButton(
+              onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder:(context) => const SavedNewsScreen()));
+              },
+              icon: const Icon(Icons.bookmark_border)
+            )
+          ],
         ),
         body: BlocBuilder<NewsBloc, NewsState>(builder: (context, state) {
 
